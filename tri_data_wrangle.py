@@ -33,6 +33,10 @@ def parse_triathlon_data(filename):
 			for i,element in enumerate(line.split(',')):
 				header = headers[i]
 				if header in ['Pos','Category', 'Cat Pos', 'Age', 'Gender', 'Gen Pos']:
+					if element == 'Male':
+						element = 1
+					elif element == 'Female':
+						element = 0
 					participant[header] = element
 				elif header in ['Time', 'Swim', 'Cycle', 'Run']:
 					participant[header] = convert_time_to_seconds(element)
